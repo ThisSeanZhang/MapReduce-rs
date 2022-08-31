@@ -1,13 +1,13 @@
 use base::ProcessPlugin;
 
 #[derive(Debug, Default)]
-struct WordCount {
+pub struct WordCount {
 }
 
 impl ProcessPlugin for WordCount {
     fn map(&self, _file_name: String, contents: String) -> Vec<(String, String)> {
         contents
-        .split(char::is_alphabetic)
+        .split(not_alphabetic)
         .filter(|s| !s.is_empty())
         .map(|s| (s.to_owned(), "1".to_string()))
         .collect()
@@ -18,8 +18,12 @@ impl ProcessPlugin for WordCount {
     }
 }
 
+fn not_alphabetic(ch: char) -> bool {
+    !ch.is_alphabetic()
+}
+
 #[no_mangle]
-pub extern "C" fn _build_plugin() -> Box<dyn ProcessPlugin> {
+pub fn _build_plugin() -> Box<dyn ProcessPlugin> {
     Box::new(WordCount::default())
 }
 
