@@ -10,5 +10,5 @@ crate-type = ["dylib"]
 
 [dependencies]
 
-[dependencies.base]
-path="../base"
+[dependencies.core-base]
+path="../core-base"

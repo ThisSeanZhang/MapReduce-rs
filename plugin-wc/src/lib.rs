@@ -1,4 +1,4 @@
-use base::ProcessPlugin;
+use core_base::ProcessPlugin;
 
 #[derive(Debug, Default)]
 pub struct WordCount {

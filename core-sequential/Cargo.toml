@@ -1,5 +1,5 @@
 [package]
-name = "sequential"
+name = "core-sequential"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,5 +8,5 @@ edition = "2021"
 [dependencies]
 structopt = "0.3.26"
 
-[dependencies.base]
-path="../base"
+[dependencies.core-base]
+path="../core-base"

@@ -4,4 +4,4 @@ build:
 	cargo build --release
 
 seq: build
-	cargo run --release --package sequential -- -p plugin_${PLUGIN} data-raw/*
+	cargo run --release --package core-sequential -- -p plugin_${PLUGIN} data-raw/*
