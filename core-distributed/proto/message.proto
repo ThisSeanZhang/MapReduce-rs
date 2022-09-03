@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package io.whileaway.code.example.mapreduce;
+
+enum TASK_TYPE {
+  MAP = 0;
+  REDUCE = 1;
+}
+
+enum RUNNING_STATUS {
+  WAIT = 0;
+  RUNNING = 1;
+  FINISH = 2;
+}
+
+message TaskReq {
+  string work_id = 1;
+}
+
+message TaskResp {
+  TaskDist task = 1;
+  RUNNING_STATUS status = 4;
+}
+
+message TaskDist {
+  string task_id = 1;
+  string work_id = 2;
+  repeated string files = 3;
+  int32 out_file_num = 4;
+  TASK_TYPE status = 5;
+}
+
+message TaskSubmit {
+  string task_id = 1;
+  string work_id = 2;
+  repeated string files = 3;
+}
+
+// Echo is the echo service.
+service Coordinator {
+  rpc RequestTask(TaskReq) returns (TaskResp);
+
+  rpc SubmitTask(TaskSubmit) returns (TaskResp);
+  // rpc FinishTask();
+}

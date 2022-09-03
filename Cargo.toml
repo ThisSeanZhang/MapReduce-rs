@@ -1,6 +1,5 @@
 [workspace]
 members = [
- "core-base",
- "core-sequential",
+ "core-*",
  "plugin-*",
 ]
